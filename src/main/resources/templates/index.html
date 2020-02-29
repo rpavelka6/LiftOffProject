@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <h2>Properties</h2>
+    <ul>
+        <li th:each="property : ${properties}">
+            <a th:href="@{'/view/' + ${property.propertyId}}" th:text="${property.streetAddress}"></a>
+        </li>
+    </ul>
+
+</div>
+
+</body>
