@@ -9,7 +9,6 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
 public class PropertyController {
@@ -17,13 +16,19 @@ public class PropertyController {
     @Autowired
     private PropertyRepository propertyRepository;
 
-    @RequestMapping("")
-    public String index(Model model) {
+//    @RequestMapping("")
+//    public String index() {
+//
+//        return "index";
+//    }
+
+    @GetMapping("property_menu")
+    public String displayPropertyMenu(Model model) {
 
         model.addAttribute("title", "All Properties");
         model.addAttribute("properties", propertyRepository.findAll());
 
-        return "index";
+        return "property_menu";
     }
 
     @GetMapping("add")
