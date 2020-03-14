@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <title>Inspector Database Welcome</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
+
+<head th:replace="fragments :: head"></head>
+
 <body>
 
-<form action="/action_page.php" class="was-validated">
+<form action="/action_page.php" method="post">
     <div class="container">
         <h1>Welcome to the Inspector Database</h1>
-        <h2>Click SUBMIT below for access</h2>
-        <button type="submit" mb-2 class="btn btn-primary">Submit</button>
+        <h2>Click ENTER below for access</h2>
+
+<!--        Why doesn't the button work?-->
+<!--        <button type="submit" mb-2 class="btn btn-primary" href="/inspector">ENTER</button>-->
+        <ul class="nav-item"><a class="nav-link" href="/inspector">ENTER</a></ul>
     </div>
 
 </form>

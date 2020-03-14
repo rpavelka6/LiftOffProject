@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <title>Inspector Database Login</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
 <form action="/action_page.php" class="was-validated">
     <div class="form-group">
-        <label for="uname">Username:</label>
-        <input type="text" class="form-control" mb-2 mr-sm-2 id="uname" placeholder="Enter username" name="uname" required>
+        <label for="userName">Username:</label>
+        <input type="text" class="form-control" mb-2 mr-sm-2 id="userName" placeholder="Enter username" name="userName" required>
         <div class="valid-feedback">Valid.</div>
         <div class="invalid-feedback">Please fill out this field.</div>
     </div>
     <div class="form-group">
-        <label for="pwd">Password:</label>
-        <input type="password" class="form-control" mb-2 mr-sm-2 id="pwd" placeholder="Enter password" name="pswd" required>
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" mb-2 mr-sm-2 id="password" placeholder="Enter password" name="password" required>
         <div class="valid-feedback">Valid.</div>
         <div class="invalid-feedback">Please fill out this field.</div>
     </div>
