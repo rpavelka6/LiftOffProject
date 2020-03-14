@@ -22,17 +22,26 @@
 
     <div class="form-group">
         <label th:for="state">Property State</label>
-        <input class="form-control" th:field="${property.state}" />
-        <span th:errors="${property.state}" class="error"></span>
+        <select id="state" th:field="${property.state}">
+            <option value="MO">MO</option>
+            <option value="IL">IL</option>
+            <option value="OH">OH</option>
+        </select>
     </div>
 
-    <div class="form-group">
+        <div class="form-group">
         <label th:for="zip_code">Property Zip Code</label>
         <input class="form-control" th:field="${property.zipCode}" />
         <span th:errors="${property.zipCode}" class="error"></span>
     </div>
 
-    <input type="submit" value="Add Property" />
+<!--        <div class="form-group">-->
+<!--            <label th:for="userName">Inspector:</label>-->
+<!--            <input class="form-control" th:field="${inspector.userName}" />-->
+<!--            <span th:errors="${inspector.userName}" class="error"></span>-->
+<!--        </div>-->
+
+        <input type="submit" value="Add Property" />
 </form>
 
 </body>

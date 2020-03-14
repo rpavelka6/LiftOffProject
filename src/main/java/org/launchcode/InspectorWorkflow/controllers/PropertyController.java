@@ -1,6 +1,7 @@
 package org.launchcode.InspectorWorkflow.controllers;
 
 import org.launchcode.InspectorWorkflow.models.Property;
+import org.launchcode.InspectorWorkflow.models.data.InspectorRepository;
 import org.launchcode.InspectorWorkflow.models.data.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ public class PropertyController {
 
     @Autowired
     private PropertyRepository propertyRepository;
+
+    @Autowired
+    private InspectorRepository inspectorRepository;
 
     @GetMapping("index")
     public String index(Model model) {
@@ -48,7 +52,7 @@ public class PropertyController {
 
         propertyRepository.save(newProperty);
 //        return redirect:view;
-        return "property/add";
+        return "property/index";
     }
 
     @GetMapping("view")
