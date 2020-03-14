@@ -26,6 +26,7 @@ public class PropertyController {
     @GetMapping("list")
     public String displayPropertyMenu(Model model) {
 
+//        Add SEARCH feature or LIST ALL - currently LIST ALL is default
         model.addAttribute("title", "All Properties");
         model.addAttribute("properties", propertyRepository.findAll());
 
