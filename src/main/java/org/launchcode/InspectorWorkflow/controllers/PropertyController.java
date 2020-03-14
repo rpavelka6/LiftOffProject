@@ -11,24 +11,25 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("property")
 public class PropertyController {
 
     @Autowired
     private PropertyRepository propertyRepository;
 
-//    @RequestMapping("")
-//    public String index() {
-//
-//        return "index";
-//    }
+    @GetMapping("index")
+    public String index(Model model) {
 
-    @GetMapping("property_menu")
+        return "property/index";
+    }
+
+    @GetMapping("list")
     public String displayPropertyMenu(Model model) {
 
         model.addAttribute("title", "All Properties");
         model.addAttribute("properties", propertyRepository.findAll());
 
-        return "property_menu";
+        return "property/list";
     }
 
     @GetMapping("add")
