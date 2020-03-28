@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,16 +32,18 @@ public class Property {
     @Size(min = 5, max = 5, message="Zip Code must be 5 characters")
     private String zipCode;
 
-//    @NotBlank(message = "Inspector Name is required")
-//    @Size(min = 3, message="Inspector Name must be at least 3 characters")
-    private String inspector;
+    private int inspector_id;
 
-    public Property(String streetAddress, String city, String state, String zipCode, String inspector) {
+    //How to assign current date?
+    private LocalDate inspection_date;
+
+    public Property(String streetAddress, String city, String state, String zipCode, int inspector_id, LocalDate inspection_date) {
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.inspector = inspector;
+        this.inspector_id = inspector_id;
+        this.inspection_date = inspection_date;
     }
 
     public Property() {}
@@ -81,11 +84,19 @@ public class Property {
         this.zipCode = zipCode;
     }
 
-    public String getInspector() {
-        return inspector;
+    public int getInspector_id() {
+        return inspector_id;
     }
 
-    public void setInspector(String inspector) {
-        this.inspector = inspector;
+    public void setInspector_id(int inspector_id) {
+        this.inspector_id = inspector_id;
+    }
+
+    public LocalDate getInspection_date() {
+        return inspection_date;
+    }
+
+    public void setInspection_date(LocalDate inspection_date) {
+        this.inspection_date = inspection_date;
     }
 }

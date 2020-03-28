@@ -1,6 +1,7 @@
 package org.launchcode.InspectorWorkflow.controllers;
 
 import org.launchcode.InspectorWorkflow.models.Property;
+import org.launchcode.InspectorWorkflow.models.Inspector;
 import org.launchcode.InspectorWorkflow.models.data.InspectorRepository;
 import org.launchcode.InspectorWorkflow.models.data.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
