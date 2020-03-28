@@ -6,14 +6,12 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@Entity
 public class Inspector {
-
-    @Entity
-    public class User {
 
         @Id
         @GeneratedValue
-        private int propertyId;
+        private int inspectorId;
 
         @NotBlank(message = "User Name is required")
         @Size(min = 8, max = 8, message = "User name must be 8 characters")
@@ -23,32 +21,30 @@ public class Inspector {
         @Size(min = 12, max = 12, message = "Password must be 12 characters")
         private String password;
 
-        public User(String userName, String password) {
+        public Inspector(String userName, String password) {
             this.userName = userName;
             this.password = password;
         }
 
-        public User() {
-        }
+        public Inspector() {}
 
-        public int getPropertyId() {
-            return propertyId;
-        }
+    public int getInspectorId() {
+        return inspectorId;
+    }
 
-        public String getUserName() {
-            return userName;
-        }
+    public String getUserName() {
+        return userName;
+    }
 
-        public void setUserName(String userName) {
-            this.userName = userName;
-        }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-        public String getPassword() {
-            return password;
-        }
+    public String getPassword() {
+        return password;
+    }
 
-        public void setPassword(String password) {
-            this.password = password;
-        }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -43,6 +43,12 @@ public class PropertyController {
         return "property/add";
     }
 
+    @PostMapping("index")
+    public String homeFromAdd() {
+
+        return "property/index";
+    }
+
     @PostMapping("add")
     public String processAddPropertyForm(@ModelAttribute @Valid Property newProperty, Errors errors, Model model) {
 
@@ -51,9 +57,20 @@ public class PropertyController {
         }
 
         propertyRepository.save(newProperty);
-//        return redirect:view;
         return "property/index";
     }
+
+//    @PostMapping("add")
+//    public String homeFromAdd() {
+//
+//        return "property/index";
+//    }
+
+//        if (isset($_POST['add_button'])) {
+//            return "property/add";
+//        } else if (isset($_POST['return_to_main_menu_button'])) {
+//            return "property/index";
+//    }
 
     @GetMapping("view")
 //    public String displayViewProperty(Model model, @PathVariable int employerId) {

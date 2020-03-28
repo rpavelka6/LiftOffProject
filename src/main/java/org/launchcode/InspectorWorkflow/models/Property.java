@@ -29,13 +29,13 @@ public class Property {
 
     @NotBlank(message = "Zip Code is required")
     @Size(min = 5, max = 5, message="Zip Code must be 5 characters")
-    private Integer zipCode;
+    private String zipCode;
 
-    @NotBlank(message = "Inspector Name is required")
-    @Size(min = 3, message="Inspector Name must be at least 3 characters")
+//    @NotBlank(message = "Inspector Name is required")
+//    @Size(min = 3, message="Inspector Name must be at least 3 characters")
     private String inspector;
 
-    public Property(String streetAddress, String city, String state, Integer zipCode, String inspector) {
+    public Property(String streetAddress, String city, String state, String zipCode, String inspector) {
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
@@ -73,11 +73,11 @@ public class Property {
         this.state = state;
     }
 
-    public Integer getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(Integer zipCode) {
+    public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
