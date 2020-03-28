@@ -1,4 +1,31 @@
-property_id,street_address,city,state,zip_code,inspector
-1,10779 Roxanna Drive,St. Louis,MO,63128,Bob
-2,1025 E Essex Avenue,Glendale,MO,63122,Bob
-3,2808 Barvilla Court,Ballwin,MO,63021,Derek
+PROPERTY,,,INSPECTOR,,,PROPERTY_DATA,,,BUDGET_ANALYSIS,,,SCOPE
+,,,,,,,,,,,,
+property_id,integer,,inspector_id,integer,,property_id,boolean,,property_id,,,property_id
+street_address,string,,user_name,string,,ppd,boolean,,,,,
+apt_num,string,,password,string,,storm,boolean,,,,,
+city,string,,inspector_name,string,,mailbox,boolean,,,,,
+state,ENUM,,inspector_region,string,,numbers,boolean,,,,,
+zip_code,string,,,,,screens,boolean,,,,,
+inspector_id,integer,,,,,light,boolean,,,,,
+inspection_date,date,,,,,light_pole,boolean,,,,,
+budget_analysis,boolean,,,,,porch_paint,boolean,,,,,
+budget_date,date,,,,,railings,boolean,,,,,
+scope,boolean,,,,,fix_siding,boolean,,,,,
+scope_date,date,,,,,clean_gutters,boolean,,,,,
+,,,,,,repair_gutters,boolean,,,,,
+,,,,,,splash_block,boolean,,,,,
+,,,,,,gb,boolean,,,,,
+,,,,,,ppd_desc,string,,,,,
+,,,,,,storm_desc,string,,,,,
+,,,,,,mailbox_desc,string,,,,,
+,,,,,,numbers_desc,string,,,,,
+,,,,,,screens_desc,string,,,,,
+,,,,,,light_desc,string,,,,,
+,,,,,,light_pole_desc,string,,,,,
+,,,,,,porch_paint_desc,string,,,,,
+,,,,,,railings_desc,string,,,,,
+,,,,,,fix_siding_desc,string,,,,,
+,,,,,,clean_gutters_desc,string,,,,,
+,,,,,,repair_gutters_desc,string,,,,,
+,,,,,,splash_block_desc,string,,,,,
+,,,,,,gb_desc,string,,,,,

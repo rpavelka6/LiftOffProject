@@ -1,6 +1,7 @@
 package org.launchcode.InspectorWorkflow.controllers;
 
 import org.launchcode.InspectorWorkflow.models.Property;
+import org.launchcode.InspectorWorkflow.models.data.InspectorRepository;
 import org.launchcode.InspectorWorkflow.models.data.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,27 +10,43 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.Optional;
 
 @Controller
+@RequestMapping("property")
 public class PropertyController {
 
     @Autowired
     private PropertyRepository propertyRepository;
 
-    @RequestMapping("")
+    @Autowired
+    private InspectorRepository inspectorRepository;
+
+    @GetMapping("index")
     public String index(Model model) {
 
+        return "property/index";
+    }
+
+    @GetMapping("list")
+    public String displayPropertyMenu(Model model) {
+
+//        Add SEARCH feature or LIST ALL - currently LIST ALL is default
         model.addAttribute("title", "All Properties");
         model.addAttribute("properties", propertyRepository.findAll());
 
-        return "index";
+        return "property/list";
     }
 
     @GetMapping("add")
     public String displayAddPropertyForm(Model model) {
         model.addAttribute(new Property());
         return "property/add";
+    }
+
+    @PostMapping("index")
+    public String homeFromAdd() {
+
+        return "property/index";
     }
 
     @PostMapping("add")
@@ -40,9 +57,20 @@ public class PropertyController {
         }
 
         propertyRepository.save(newProperty);
-//        return redirect:view;
-        return "property/add";
+        return "property/index";
     }
+
+//    @PostMapping("add")
+//    public String homeFromAdd() {
+//
+//        return "property/index";
+//    }
+
+//        if (isset($_POST['add_button'])) {
+//            return "property/add";
+//        } else if (isset($_POST['return_to_main_menu_button'])) {
+//            return "property/index";
+//    }
 
     @GetMapping("view")
 //    public String displayViewProperty(Model model, @PathVariable int employerId) {
