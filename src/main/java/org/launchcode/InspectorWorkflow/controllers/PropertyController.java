@@ -38,6 +38,15 @@ public class PropertyController {
         return "property/list";
     }
 
+    @PostMapping("list")
+    public String displaySelectedProperty(Model model, @RequestParam int theId) {
+//      Get property based on selection
+        model.addAttribute("title", "Selected Property");
+//        model.addAttribute(s:"propertyselected", propertyRepository.findById(theId))
+
+        return "property/list";
+    }
+
     @GetMapping("add")
     public String displayAddPropertyForm(Model model) {
         model.addAttribute(new Property());
@@ -67,11 +76,6 @@ public class PropertyController {
 //        return "property/index";
 //    }
 
-//        if (isset($_POST['add_button'])) {
-//            return "property/add";
-//        } else if (isset($_POST['return_to_main_menu_button'])) {
-//            return "property/index";
-//    }
 
     @GetMapping("view")
 //    public String displayViewProperty(Model model, @PathVariable int employerId) {

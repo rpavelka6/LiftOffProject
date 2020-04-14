@@ -7,8 +7,7 @@
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
-<!--    <h1 style="background-color:DodgerBlue;">Hello World</h1>-->
-    <h2 style="background-color:DodgerBlue;">Properties</h2>
+    <h2>Inspector Database Properties</h2>
     <ul>
         <li th:each="property : ${properties}">
             <a th:href="@{'/view/' + ${property.propertyId}}" th:text="${property.streetAddress}"></a>
@@ -16,5 +15,4 @@
     </ul>
 
 </div>
-
 </body>

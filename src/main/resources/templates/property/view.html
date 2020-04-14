@@ -3,15 +3,25 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Property Street Address: ' + property.streetAddress}">Default Title</h1>
+<!--<h1 th:text="${'Property Street Address: ' + property.streetAddress}">Default Title</h1>-->
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<!--<div class="job-listing">-->
-<!--    <p th:text="${'Name: ' + employer.name}"></p>-->
-<!--    <p th:text="${'Location: ' + employer.location}"></p>-->
-<!--</div>-->
-
-
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+    </tr>
+    </thead>property : ${property}">
+        <td th:text="${property.propertyId}"></td>
+        <td th:text="${property.streetAddress}"></td>
+        <td th:text="${property.city}"></td>
+        <td th:text="${property.state}"></td>
+        <td th:text="${property.zipCode}"></td>
+    </tr>
+</table>
 </body>
 </html>

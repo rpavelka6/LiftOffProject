@@ -3,6 +3,7 @@ package org.launchcode.InspectorWorkflow.models;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -32,18 +33,20 @@ public class Property {
     @Size(min = 5, max = 5, message="Zip Code must be 5 characters")
     private String zipCode;
 
-    private int inspector_id;
+    @ManyToOne
+    private Inspector inspectorId;
 
     //How to assign current date?
-    private LocalDate inspection_date;
+//    private LocalDate inspectionDate = LocalDate.now();
+    private LocalDate inspectionDate;
 
-    public Property(String streetAddress, String city, String state, String zipCode, int inspector_id, LocalDate inspection_date) {
+    public Property(String streetAddress, String city, String state, String zipCode, Inspector inspectorId, LocalDate inspectionDate) {
         this.streetAddress = streetAddress;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.inspector_id = inspector_id;
-        this.inspection_date = inspection_date;
+        this.inspectorId = inspectorId;
+        this.inspectionDate = inspectionDate;
     }
 
     public Property() {}
@@ -84,19 +87,19 @@ public class Property {
         this.zipCode = zipCode;
     }
 
-    public int getInspector_id() {
-        return inspector_id;
+    public LocalDate getInspectionDate() {
+        return inspectionDate;
     }
 
-    public void setInspector_id(int inspector_id) {
-        this.inspector_id = inspector_id;
+    public void setInspectionDate(LocalDate inspectionDate) {
+        this.inspectionDate = inspectionDate;
     }
 
-    public LocalDate getInspection_date() {
-        return inspection_date;
+    public Inspector getInspectorId() {
+        return inspectorId;
     }
 
-    public void setInspection_date(LocalDate inspection_date) {
-        this.inspection_date = inspection_date;
+    public void setInspectorId(Inspector inspectorId) {
+        this.inspectorId = inspectorId;
     }
 }
