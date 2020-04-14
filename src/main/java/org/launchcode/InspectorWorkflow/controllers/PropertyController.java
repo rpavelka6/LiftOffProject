@@ -53,6 +53,24 @@ public class PropertyController {
         return "property/add";
     }
 
+    @GetMapping("search")
+    public String displaySearchPropertyForm(Model model) {
+
+        return "property/search";
+    }
+
+    @GetMapping("edit")
+    public String displayEditPropertyForm(Model model) {
+
+        return "property/edit";
+    }
+
+    @GetMapping("remove")
+    public String displayRemovePropertyForm(Model model) {
+
+        return "property/remove";
+    }
+
     @PostMapping("index")
     public String homeFromAdd() {
 
