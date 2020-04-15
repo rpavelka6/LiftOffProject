@@ -1,6 +1,7 @@
 package org.launchcode.InspectorWorkflow.controllers;
 
 import org.launchcode.InspectorWorkflow.models.Property;
+import org.launchcode.InspectorWorkflow.models.PropertyData;
 import org.launchcode.InspectorWorkflow.models.Inspector;
 import org.launchcode.InspectorWorkflow.models.data.InspectorRepository;
 import org.launchcode.InspectorWorkflow.models.data.PropertyRepository;
@@ -55,38 +56,51 @@ public class PropertyController {
 
     @GetMapping("search")
     public String displaySearchPropertyForm(Model model) {
-
         return "property/search";
     }
 
-    @GetMapping("edit")
-    public String displayEditPropertyForm(Model model) {
+    @PostMapping("results")
+    public String displaySearchResults(Model model, @RequestParam String searchTerm) {
 
-        return "property/edit";
+        Iterable<Property> properties;
+
+        properties = PropertyData.findPropertyByAddress(searchTerm, propertyRepository.findAll());
+
+//        model.addAttribute("columns", columnChoices);
+//        model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
+        model.addAttribute("properties", properties);
+
+        return "property/results";
     }
 
-    @GetMapping("remove")
-    public String displayRemovePropertyForm(Model model) {
+        @GetMapping("edit")
+        public String displayEditPropertyForm (Model model){
 
-        return "property/remove";
-    }
-
-    @PostMapping("index")
-    public String homeFromAdd() {
-
-        return "property/index";
-    }
-
-    @PostMapping("add")
-    public String processAddPropertyForm(@ModelAttribute @Valid Property newProperty, Errors errors, Model model) {
-
-        if (errors.hasErrors()) {
-            return "property/add";
+            return "property/edit";
         }
 
-        propertyRepository.save(newProperty);
-        return "property/index";
-    }
+        @GetMapping("remove")
+        public String displayRemovePropertyForm (Model model){
+
+            return "property/remove";
+        }
+
+        @PostMapping("index")
+        public String homeFromAdd () {
+
+            return "property/index";
+        }
+
+        @PostMapping("add")
+        public String processAddPropertyForm (@ModelAttribute @Valid Property newProperty, Errors errors, Model model){
+
+            if (errors.hasErrors()) {
+                return "property/add";
+            }
+
+            propertyRepository.save(newProperty);
+            return "property/index";
+        }
 
 //    @PostMapping("add")
 //    public String homeFromAdd() {
@@ -95,9 +109,9 @@ public class PropertyController {
 //    }
 
 
-    @GetMapping("view")
+        @GetMapping("view")
 //    public String displayViewProperty(Model model, @PathVariable int employerId) {
-    public String displayViewProperty(Model model) {
+        public String displayViewProperty (Model model){
 //        Optional optEmployer = propertyRepository.findById(propertyId);
 //        if (optEmployer.isPresent()) {
 //            Employer employer = (Employer) optEmployer.get();
@@ -107,4 +121,4 @@ public class PropertyController {
             model.addAttribute("property", propertyRepository.findAll());
             return "redirect:../";
         }
-}
+    }

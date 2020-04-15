@@ -6,12 +6,13 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<form method="post" style="max-width:600px;">
+<form method="post" style="max-width:600px;" action="/property/results">
     <div class="form-group">
-        <label th:for="street_address">Property Street Address to search for</label>
-<!--        <input class="form-control" th:field="${property.streetAddress}"/>-->
+        <label>Property Street Address to search for</label>
+        <input class="form-control" id="searchTerm" name="searchTerm"/>
 <!--        <span th:errors="${property.streetAddress}" class="error"></span>-->
     </div>
+    <input type="submit" value="SEARCH"/>
 </form>
 
 <form action="/property/index">
