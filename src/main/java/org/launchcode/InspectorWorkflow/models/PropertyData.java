@@ -17,4 +17,18 @@ public class PropertyData {
                 return results;
 
         }
+
+    public static ArrayList<Property> findPropertyDataByPropertyID(Integer propId, Iterable<Property> allProperties) {
+
+        ArrayList<Property> results = new ArrayList<>();
+
+        for (Property property : allProperties) {
+            if (property.getPropertyId() == propId) {
+                results.add(property);
+            }
+        }
+
+        return results;
+
+    }
 }

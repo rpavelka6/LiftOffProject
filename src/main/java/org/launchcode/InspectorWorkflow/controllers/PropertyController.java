@@ -66,8 +66,6 @@ public class PropertyController {
 
         properties = PropertyData.findPropertyByAddress(searchTerm, propertyRepository.findAll());
 
-//        model.addAttribute("columns", columnChoices);
-//        model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);
         model.addAttribute("properties", properties);
 
         return "property/results";
@@ -102,23 +100,14 @@ public class PropertyController {
             return "property/index";
         }
 
-//    @PostMapping("add")
-//    public String homeFromAdd() {
-//
-//        return "property/index";
-//    }
-
-
-        @GetMapping("view")
-//    public String displayViewProperty(Model model, @PathVariable int employerId) {
-        public String displayViewProperty (Model model){
-//        Optional optEmployer = propertyRepository.findById(propertyId);
-//        if (optEmployer.isPresent()) {
-//            Employer employer = (Employer) optEmployer.get();
-//            model.addAttribute("employer", employer);
-//            return "employers/view";
-//        } else {
+        @RequestMapping(path="view/{propId}", method=RequestMethod.GET)
+        public String displayViewProperty(Model model, @PathVariable("propId") int propId) {
             model.addAttribute("property", propertyRepository.findAll());
-            return "redirect:../";
+            Iterable<Property> properties;
+
+            properties = PropertyData.findPropertyDataByPropertyID(propId, propertyRepository.findAll());
+
+            model.addAttribute("properties", properties);
+            return "property/displayinspection";
         }
     }
