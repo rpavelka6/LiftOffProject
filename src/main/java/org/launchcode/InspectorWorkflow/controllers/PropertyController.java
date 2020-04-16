@@ -41,9 +41,8 @@ public class PropertyController {
 
     @PostMapping("list")
     public String displaySelectedProperty(Model model, @RequestParam int theId) {
-//      Get property based on selection
+
         model.addAttribute("title", "Selected Property");
-//        model.addAttribute(s:"propertyselected", propertyRepository.findById(theId))
 
         return "property/list";
     }

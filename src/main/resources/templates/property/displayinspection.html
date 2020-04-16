@@ -3,17 +3,14 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container">
-<h1 th:text="${'Property: ' + property.streetAddress}">Default Title</h1>
 
-<!--<nav th:replace="fragments :: page-header"></nav>-->
+<div th:each="property : ${properties}">
 
-<div>
-    <p th:text="${'ID: ' + property.id}"></p>
-    <p th:text="${'Street Address: ' + property.streetAddress}"></p>
-    <p th:text="${'City: ' + property.city + '     State: ' + property.state + '  Zip Code: ' + property.zipCode"></p>
-<!--    <p>-->
-<!--        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>-->
-<!--    </p>-->
+    <h1 th:text="${'Property: ' + property.streetAddress}">Default Title</h1>
+    <p th:text="${'City: ' + property.city}"></p>
+    <p th:text="${'State: ' + property.state}"></p>
+    <p th:text="${'Zip Code: ' + property.zipCode}"></p>
+<!--    <p th:text="${'Inspector Id:  ' + inspector.inspectorId}"></p>-->
 
 </div>
 </body>
