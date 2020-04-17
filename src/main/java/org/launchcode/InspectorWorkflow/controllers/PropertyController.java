@@ -12,6 +12,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("property")
@@ -32,20 +34,19 @@ public class PropertyController {
     @GetMapping("list")
     public String displayPropertyMenu(Model model) {
 
-//        Add SEARCH feature or LIST ALL - currently LIST ALL is default
         model.addAttribute("title", "All Properties");
         model.addAttribute("properties", propertyRepository.findAll());
 
         return "property/list";
     }
 
-    @PostMapping("list")
-    public String displaySelectedProperty(Model model, @RequestParam int theId) {
-
-        model.addAttribute("title", "Selected Property");
-
-        return "property/list";
-    }
+//    @PostMapping("list")
+//    public String displaySelectedProperty(Model model, @RequestParam int theId) {
+//
+//        model.addAttribute("title", "Selected Property");
+//
+//        return "property/list";
+//    }
 
     @GetMapping("add")
     public String displayAddPropertyForm(Model model) {
@@ -61,10 +62,8 @@ public class PropertyController {
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchTerm) {
 
-        Iterable<Property> properties;
-
+        ArrayList<Property> properties;
         properties = PropertyData.findPropertyByAddress(searchTerm, propertyRepository.findAll());
-
         model.addAttribute("properties", properties);
 
         return "property/results";
@@ -95,18 +94,22 @@ public class PropertyController {
                 return "property/add";
             }
 
+            newProperty.setInspectionDate(LocalDate.now());
             propertyRepository.save(newProperty);
             return "property/index";
         }
 
         @RequestMapping(path="view/{propId}", method=RequestMethod.GET)
         public String displayViewProperty(Model model, @PathVariable("propId") int propId) {
-            model.addAttribute("property", propertyRepository.findAll());
-            Iterable<Property> properties;
+
+            ArrayList<Property> properties;
 
             properties = PropertyData.findPropertyDataByPropertyID(propId, propertyRepository.findAll());
 
-            model.addAttribute("properties", properties);
+            Property singleProperty = properties.get(0);
+
+            model.addAttribute("singleProperty", singleProperty);
+
             return "property/displayinspection";
         }
     }
