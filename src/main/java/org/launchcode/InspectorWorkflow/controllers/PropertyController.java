@@ -40,14 +40,6 @@ public class PropertyController {
         return "property/list";
     }
 
-//    @PostMapping("list")
-//    public String displaySelectedProperty(Model model, @RequestParam int theId) {
-//
-//        model.addAttribute("title", "Selected Property");
-//
-//        return "property/list";
-//    }
-
     @GetMapping("add")
     public String displayAddPropertyForm(Model model) {
         model.addAttribute(new Property());

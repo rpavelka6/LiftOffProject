@@ -1,7 +1,8 @@
 package org.launchcode.InspectorWorkflow.controllers;
 
 import org.launchcode.InspectorWorkflow.models.Inspector;
-import org.launchcode.InspectorWorkflow.models.Property;
+import org.launchcode.InspectorWorkflow.models.data.InspectorRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -16,6 +17,9 @@ import javax.validation.Valid;
 @RequestMapping("inspector")
 public class InspectorController {
 
+    @Autowired
+    private InspectorRepository inspectorRepository;
+
     @GetMapping
     public String displayLogInScreen(Model model) {
 
@@ -26,14 +30,25 @@ public class InspectorController {
         return "inspector/index";
     }
 
-//    @PostMapping("index")
-//    public String checkValid(@ModelAttribute @Valid Inspector newInspector, Errors errors, Model model) {
+    @PostMapping
+    public String processValidateCreds (@ModelAttribute @Valid Inspector newInspector, Errors errors, Model model) {
+
+        if (errors.hasErrors()) {
+            return "inspector";
+        }
+
+        return "property/index";
+    }
+
+//    @PostMapping("add")
+//    public String processAddInspector (@ModelAttribute @Valid Inspector newInspector, Errors errors, Model model){
 //
-//        if(errors.hasErrors()) {
-//            model.addAttribute("title", "Create Event");
+//        if (errors.hasErrors()) {
 //            return "inspector/index";
 //        }
-//        return "inspector/index";
+//
+//        inspectorRepository.save(newInspector);
+//        return "property/index";
 //    }
 
 }

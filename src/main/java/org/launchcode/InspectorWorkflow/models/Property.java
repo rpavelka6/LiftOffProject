@@ -7,8 +7,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Property {
@@ -36,8 +34,6 @@ public class Property {
     @ManyToOne
     private Inspector inspectorId;
 
-    //How to assign current date?
-//    private LocalDate inspectionDate = LocalDate.now();
     private LocalDate inspectionDate;
 
     public Property(String streetAddress, String city, String state, String zipCode, Inspector inspectorId, LocalDate inspectionDate) {

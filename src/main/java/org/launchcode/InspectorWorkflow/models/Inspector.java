@@ -5,10 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 public class Inspector {
@@ -17,8 +17,9 @@ public class Inspector {
     @GeneratedValue
     private int inspectorId;
 
-    @NotBlank
-//    @NotNull(message = "User Name is required")
+    @NotEmpty(message = "User name is required")
+    @NotBlank(message = "User name is required")
+    @NotNull(message = "User Name is required")
     @Size(min = 8, max = 8, message = "User name must be 8 characters")
     private String userName;
 
